@@ -12,8 +12,6 @@ namespace MovieApp
         static void Main(string[] args)
         {
             joinFuncs.lambdaJoin();
-
-        
         }
     }
 }
