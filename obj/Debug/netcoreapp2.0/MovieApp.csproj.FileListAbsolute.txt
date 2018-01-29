@@ -1,0 +1,10 @@
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\bin\Debug\netcoreapp2.0\MovieApp.deps.json
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\bin\Debug\netcoreapp2.0\MovieApp.runtimeconfig.json
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\bin\Debug\netcoreapp2.0\MovieApp.runtimeconfig.dev.json
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\bin\Debug\netcoreapp2.0\MovieApp.dll
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\bin\Debug\netcoreapp2.0\MovieApp.pdb
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\obj\Debug\netcoreapp2.0\MovieApp.csproj.CoreCompileInputs.cache
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\obj\Debug\netcoreapp2.0\MovieApp.AssemblyInfoInputs.cache
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\obj\Debug\netcoreapp2.0\MovieApp.AssemblyInfo.cs
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\obj\Debug\netcoreapp2.0\MovieApp.dll
+c:\Users\ccuts\Documents\CSharp_Scripts\DEV258x_Microsoft\MovieApp_FromLab\obj\Debug\netcoreapp2.0\MovieApp.pdb
