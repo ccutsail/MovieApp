@@ -9,6 +9,7 @@ namespace MovieApp.Entities
         public virtual DbSet<Actor> Actors { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Film> Films { get; set; }
+        public virtual DbSet<ApplicationUser> Users { get; set; }
         public virtual DbSet<FilmActor> FilmActors { get; set; }
         public virtual DbSet<FilmCategory> FilmCategories { get; set; }
 

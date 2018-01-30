@@ -140,6 +140,38 @@ namespace MovieApp
             }
         }
 
+        public static void MigrationAddCol()
+        {
+            var film = MoviesContext.Instance.Films.Last();
+
+            if(film != null) 
+            {
+                Console.WriteLine($"Updating runtime for {film.Title}");
+                film.RunTime = 121;
+                MoviesContext.Instance.SaveChanges();
+            } 
+
+            var films = MoviesContext.Instance.Films
+                .OrderByDescending(f => f.RunTime)
+                .Select(f => f.Copy<Film, MovieModel>());
+            ConsoleTable.From(films).Write();
+
+        }
+        public static void MigrationAddTable()
+        {
+            var user = new ApplicationUser{
+                UserName = "testuser",
+                InvalidLoginAttempts = 0
+            };
+
+            MoviesContext.Instance.Users.Add(user);
+            MoviesContext.Instance.SaveChanges();
+
+            var users = MoviesContext.Instance.Users;
+            ConsoleTable.From(users).Write();
+
+        }
+
     }
     
 }

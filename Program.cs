@@ -11,7 +11,7 @@ namespace MovieApp
     {
         static void Main(string[] args)
         {
-            joinFuncs.lambdaJoin();
+            Module2Helper.MigrationAddTable();
         }
     }
 }
