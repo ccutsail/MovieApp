@@ -118,7 +118,7 @@ namespace MovieApp
                     actor.LastName = newName;
                     ConsoleTable.From(MoviesContext.Instance.Actors).Write();
                 }
-                else{Console.WriteLine("Ok then, Fuck off!");}
+                else{Console.WriteLine("Ok then, friend!");}
 
             }
             else{Console.WriteLine("That actor doesn't exist!");}

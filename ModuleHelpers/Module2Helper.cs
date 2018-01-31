@@ -172,7 +172,91 @@ namespace MovieApp
 
         }
 
+        public static void CompKeyTester()
+        {
+            var data = new[] {
+                new FilmInfo 
+                {
+                    Title = "Jurassic Park",
+                    ReleaseYear = "1992",
+                    Rating = "PG-13"
+                },
+                new FilmInfo
+                {
+                    Title = "Jurassic Park",
+                    ReleaseYear = "2017",
+                    Rating = "R"
+                },
+                new FilmInfo
+                {
+                    Title = "Jurassic Park",
+                    ReleaseYear = "1998",
+                    Rating = "R"
+            }};
+            MoviesContext.Instance.AddRange(data);
+            MoviesContext.Instance.SaveChanges();
+
+            var infos = MoviesContext.Instance.FilmInfo;
+            ConsoleTable.From(infos).Write();
+        }
+
+        public static void selfAssessment()
+        {
+            Console.WriteLine("Please enter a page size");
+            int pageSize = Console.ReadLine().ToInt();
+            Console.WriteLine("Please enter a page number");
+            int pageNum = Console.ReadLine().ToInt();
+            Console.WriteLine("Which column do you want to sort by?");
+            Console.WriteLine("\t Enter i for ID");
+            Console.WriteLine("\t Enter f for First Name");
+            Console.WriteLine("\t Enter l for Last Name");
+            Console.WriteLine("\t Enter a for Film");
+            var info = Console.ReadKey();
+            var sortCol = GetCol(info);
+            Console.WriteLine("");
+            Console.WriteLine("Ascending or descending?");
+            Console.WriteLine("\t Enter a for Ascending");
+            Console.WriteLine("\t Enter d for Descending");
+            string sortOrder = Console.ReadLine();
+            if(sortOrder == "a")
+            {
+                var actors = MoviesContext.Instance.Actors.OrderBy(sortCol)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(a => a.Copy<Actor,ActorModel>());
+                
+                ConsoleTable.From(actors).Write();
+
+            }
+            else if(sortOrder == "d'")
+            {
+                var actors = MoviesContext.Instance.Actors.OrderByDescending(sortCol)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(a => a.Copy<Actor,ActorModel>());
+                ConsoleTable.From(actors).Write();
+            }
+            else
+            {
+                Console.WriteLine("Nothing in the list friend");
+            }
+        }
+        private static Expression<Func<Actor, object>> GetCol(ConsoleKeyInfo info)
+        {
+            switch (info.Key)
+            {
+                case ConsoleKey.I:
+                    return a => a.ActorId;
+                case ConsoleKey.Y:
+                    return a => a.FirstName;
+                case ConsoleKey.R:
+                    return a => a.LastName;
+                default:
+                    return a => a.FilmActor;
+            }
     }
     
 }
+}
+
 

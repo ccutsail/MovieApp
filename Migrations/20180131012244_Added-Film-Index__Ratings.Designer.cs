@@ -11,8 +11,8 @@ using System;
 namespace MovieApp.Migrations
 {
     [DbContext(typeof(MoviesContext))]
-    [Migration("20180130023330_Added_Users")]
-    partial class Added_Users
+    [Migration("20180131012244_Added-Film-Index__Ratings")]
+    partial class AddedFilmIndex__Ratings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,24 @@ namespace MovieApp.Migrations
                     b.HasKey("ActorId");
 
                     b.ToTable("actor");
+                });
+
+            modelBuilder.Entity("MovieApp.Entities.ApplicationUser", b =>
+                {
+                    b.Property<int>("ApplicationUserID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("InvalidLoginAttempts");
+
+                    b.Property<DateTime?>("LastLoginDate");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("ApplicationUserID");
+
+                    b.ToTable("ApplicationUser");
                 });
 
             modelBuilder.Entity("MovieApp.Entities.Category", b =>
@@ -76,6 +94,8 @@ namespace MovieApp.Migrations
                         .HasMaxLength(255);
 
                     b.HasKey("FilmId");
+
+                    b.HasIndex("Rating");
 
                     b.ToTable("film");
                 });

@@ -12,6 +12,7 @@ namespace MovieApp.Entities
         public virtual DbSet<ApplicationUser> Users { get; set; }
         public virtual DbSet<FilmActor> FilmActors { get; set; }
         public virtual DbSet<FilmCategory> FilmCategories { get; set; }
+        public virtual DbSet<FilmInfo> FilmInfo { get; set; }
 
         private static MoviesContext _context;
         public static MoviesContext Instance
@@ -35,8 +36,10 @@ namespace MovieApp.Entities
             }
         }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<FilmInfo>(entity => entity.HasKey(e => new {e.Title, e.ReleaseYear}));
             modelBuilder.Entity<Actor>(entity =>
             {
                 entity.ToTable("actor");
@@ -64,7 +67,8 @@ namespace MovieApp.Entities
             });
 
             modelBuilder.Entity<Film>(entity =>
-            {
+            {   
+                entity.HasIndex(e => e.Rating);
                 entity.ToTable("film");
 
                 entity.Property(e => e.FilmId)
@@ -79,6 +83,8 @@ namespace MovieApp.Entities
                 entity.Property(e => e.Title)
                     .IsRequired()
                     .HasMaxLength(255);
+                
+                entity.HasIndex(r => r.Rating);
             });
 
             modelBuilder.Entity<FilmActor>(entity =>
@@ -132,6 +138,7 @@ namespace MovieApp.Entities
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("film_category_film_fk");
             });
+
         }
     }
 }

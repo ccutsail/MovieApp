@@ -11,9 +11,10 @@ using System;
 namespace MovieApp.Migrations
 {
     [DbContext(typeof(MoviesContext))]
-    partial class MoviesContextModelSnapshot : ModelSnapshot
+    [Migration("20180131012348_Added-Film-Index__Ratings__Correctly")]
+    partial class AddedFilmIndex__Ratings__Correctly
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,19 +130,6 @@ namespace MovieApp.Migrations
                         .HasName("film_category_category_fk_idx");
 
                     b.ToTable("film_category");
-                });
-
-            modelBuilder.Entity("MovieApp.Entities.FilmInfo", b =>
-                {
-                    b.Property<string>("Title");
-
-                    b.Property<string>("ReleaseYear");
-
-                    b.Property<string>("Rating");
-
-                    b.HasKey("Title", "ReleaseYear");
-
-                    b.ToTable("filminfo");
                 });
 
             modelBuilder.Entity("MovieApp.Entities.FilmActor", b =>
