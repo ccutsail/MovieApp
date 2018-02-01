@@ -11,7 +11,9 @@ namespace MovieApp
     {
         static void Main(string[] args)
         {
-            Module2Helper.selfAssessment();
+
+
+
         }
     }
 }
