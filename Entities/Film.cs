@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieApp.Entities
 {
@@ -20,5 +21,8 @@ namespace MovieApp.Entities
 
         public ICollection<FilmActor> FilmActor { get; set; }
         public ICollection<FilmCategory> FilmCategory { get; set; }
+        public int? FilmImageId { get; set; }
+        [ForeignKey(nameof(FilmImageId))]
+        public FilmImage FilmImage { get; set; }
     }
 }

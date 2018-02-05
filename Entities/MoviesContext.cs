@@ -13,6 +13,7 @@ namespace MovieApp.Entities
         public virtual DbSet<FilmActor> FilmActors { get; set; }
         public virtual DbSet<FilmCategory> FilmCategories { get; set; }
         public virtual DbSet<FilmInfo> FilmInfo { get; set; }
+        public virtual DbSet<FilmImage> FilmImages { get; set; }
 
         private static MoviesContext _context;
         public static MoviesContext Instance
