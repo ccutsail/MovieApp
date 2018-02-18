@@ -130,7 +130,7 @@ namespace MovieApp
             switch (info.Key)
             {
                 case ConsoleKey.I:
-                    return f => f.FilmId;
+                    return f => f.FilmID;
                 case ConsoleKey.Y:
                     return f => f.ReleaseYear;
                 case ConsoleKey.R:

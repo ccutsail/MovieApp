@@ -73,7 +73,7 @@ namespace MovieApp.Entities
                 entity.HasIndex(e => e.RatingCode);
                 entity.ToTable("film");
 
-                entity.Property(e => e.FilmId)
+                entity.Property(e => e.FilmID)
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.Description).HasColumnType("text");

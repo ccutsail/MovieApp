@@ -50,7 +50,7 @@ namespace MovieApp
                         Console.WriteLine($"No movie titles contain: {moviename}!");
                     }
                     else{
-                        Console.WriteLine($"ID: {mv.FilmId}  Title: {mv.Title}  Year: {mv.ReleaseYear}  Rating: {mv.RatingCode}");
+                        Console.WriteLine($"ID: {mv.FilmID}  Title: {mv.Title}  Year: {mv.ReleaseYear}  Rating: {mv.RatingCode}");
                     }
                     begin = 1;
 

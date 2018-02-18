@@ -12,7 +12,7 @@ namespace MovieApp.Entities
             FilmCategory = new HashSet<FilmCategory>();
         }
 
-        public int FilmId { get; set; }
+        public int FilmID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int? ReleaseYear { get; set; }

@@ -35,7 +35,7 @@ namespace MovieApp
                     Console.WriteLine($"\t{new string('-', 70)}");
                     foreach (var film in rating.Films.OrderByDescending(f=>f.ReleaseYear))
                     {
-                        Console.WriteLine($"\t{film.FilmId}\t{film.ReleaseYear}\t{film.Title}");
+                        Console.WriteLine($"\t{film.FilmID}\t{film.ReleaseYear}\t{film.Title}");
                     }
                 }
                 else
@@ -47,18 +47,49 @@ namespace MovieApp
             var filmsQuery = MoviesContext.Instance.Films;
             int skip = new Random().Next(0, filmsQuery.Count());
 
-            var filmId = filmsQuery.Skip(skip).First().FilmId;
+            var filmId = filmsQuery.Skip(skip).First().FilmID;
 
-            var film2 = MoviesContext.Instance.Films.First(f => f.FilmId == filmId);
+            var film2 = MoviesContext.Instance.Films.First(f => f.FilmID == filmId);
             var rating2 = MoviesContext.Instance.Rating.FirstOrDefault(r => r.RatingId == film2.RatingID);
-            Console.WriteLine($"{film2.FilmId}\t{film2.Title}\t{rating2.Code}\t{rating2.Name}");
+            Console.WriteLine($"{film2.FilmID}\t{film2.Title}\t{rating2.Code}\t{rating2.Name}");
 
             }            
         }
 
         public static void ManyToManySelect()
         {
-            Console.WriteLine(nameof(ManyToManySelect));
+            var films = MoviesContext.Instance.Films
+                .Include(f => f.FilmActor)
+                .ThenInclude(a => a.Actor);
+
+            foreach(var film in films)
+            {
+                Console.WriteLine(new string('-',78));
+                Console.WriteLine($"{film.FilmID}\t{film.ReleaseYear}\t{film.Title}");
+                Console.WriteLine(new string('-',78));
+                foreach(var fa in film.FilmActor)
+                {
+                    Console.WriteLine($"{fa.ActorId}\t{fa.Actor.FirstName}\t{fa.Actor.LastName}");
+
+                }
+
+            }
+
+            var actors = MoviesContext.Instance.Actors
+                .OrderBy(a => a.LastName)
+                .ThenBy(a => a.FirstName)
+                .Include(a => a.FilmActor)
+                .ThenInclude(f => f.Film);
+            foreach(var actor in actors)
+            {
+                Console.WriteLine(new string('-',78));
+                Console.WriteLine($"{actor.LastName}, {actor.FirstName}");
+                Console.WriteLine(new string('-',78));
+
+                foreach(var fa in actor.FilmActor){
+                    Console.WriteLine($"{fa.FilmId}\t{fa.Film.ReleaseYear}\t{fa.Film.Title}");
+                }
+            }
         }
 
         public static void ManyToManyInsert()
