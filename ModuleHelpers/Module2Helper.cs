@@ -17,7 +17,7 @@ namespace MovieApp
                 .Select(a => a.Copy<Actor, ActorModel>());
                 ConsoleTable.From(actors).Write();
             var films = MoviesContext.Instance.Films
-                .OrderBy(f => f.Rating)
+                .OrderBy(f => f.RatingCode)
                 .ThenBy(f => f.ReleaseYear)
                 .ThenBy(f => f.Title)
                 .Select(f => f.Copy<Film, MovieModel>());
@@ -31,7 +31,7 @@ namespace MovieApp
             ConsoleTable.From(actors).Write();
             var films = MoviesContext.Instance.Films
                 .OrderByDescending(f => f.ReleaseYear)
-                .ThenByDescending(f => f.Rating)
+                .ThenByDescending(f => f.RatingCode)
                 .Select(f => f.Copy<Film, MovieModel>());
             ConsoleTable.From(films).Write();
         }
@@ -134,7 +134,7 @@ namespace MovieApp
                 case ConsoleKey.Y:
                     return f => f.ReleaseYear;
                 case ConsoleKey.R:
-                    return f => f.Rating;
+                    return f => f.RatingCode;
                 default:
                     return f => f.Title;
             }

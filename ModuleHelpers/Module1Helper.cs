@@ -50,7 +50,7 @@ namespace MovieApp
                         Console.WriteLine($"No movie titles contain: {moviename}!");
                     }
                     else{
-                        Console.WriteLine($"ID: {mv.FilmId}  Title: {mv.Title}  Year: {mv.ReleaseYear}  Rating: {mv.Rating}");
+                        Console.WriteLine($"ID: {mv.FilmId}  Title: {mv.Title}  Year: {mv.ReleaseYear}  Rating: {mv.RatingCode}");
                     }
                     begin = 1;
 
@@ -85,7 +85,7 @@ namespace MovieApp
     	Console.WriteLine("Enter a Rating");
     	var rating = Console.ReadLine();
 
-    	var film = new Film {Title = title, Description = description, ReleaseYear = year, Rating = rating};
+    	var film = new Film {Title = title, Description = description, ReleaseYear = year, RatingCode = rating};
 
         MoviesContext.Instance.Films.Add(film);
         MoviesContext.Instance.SaveChanges();

@@ -14,6 +14,7 @@ namespace MovieApp.Entities
         public virtual DbSet<FilmCategory> FilmCategories { get; set; }
         public virtual DbSet<FilmInfo> FilmInfo { get; set; }
         public virtual DbSet<FilmImage> FilmImages { get; set; }
+        public virtual DbSet<Rating> Rating { get; set; }
 
         private static MoviesContext _context;
         public static MoviesContext Instance
@@ -69,7 +70,7 @@ namespace MovieApp.Entities
 
             modelBuilder.Entity<Film>(entity =>
             {   
-                entity.HasIndex(e => e.Rating);
+                entity.HasIndex(e => e.RatingCode);
                 entity.ToTable("film");
 
                 entity.Property(e => e.FilmId)
@@ -77,7 +78,7 @@ namespace MovieApp.Entities
 
                 entity.Property(e => e.Description).HasColumnType("text");
 
-                entity.Property(e => e.Rating).HasMaxLength(45);
+                entity.Property(e => e.RatingCode).HasMaxLength(45);
 
                 entity.Property(e => e.ReleaseYear).HasColumnType("int(11)");
 
@@ -85,7 +86,7 @@ namespace MovieApp.Entities
                     .IsRequired()
                     .HasMaxLength(255);
                 
-                entity.HasIndex(r => r.Rating);
+                entity.HasIndex(r => r.RatingCode);
             });
 
             modelBuilder.Entity<FilmActor>(entity =>

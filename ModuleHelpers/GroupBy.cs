@@ -9,7 +9,7 @@ namespace MovieApp
         public static void grouping_func()
         {
             var filmGroups = MoviesContext.Instance.Films
-                            .GroupBy(f => f.Rating);
+                            .GroupBy(f => f.RatingCode);
             foreach (var filmGroup in filmGroups)
             {
                 Console.WriteLine(filmGroup.Key);

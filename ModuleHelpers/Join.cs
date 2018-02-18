@@ -18,7 +18,7 @@ namespace MovieApp
                 };
 
             var films = (from f in MoviesContext.Instance.Films
-                        join r in ratings on f.Rating equals r.Code
+                        join r in ratings on f.RatingCode equals r.Code
                         select new { f.Title, r.Code, r.Name });
             ConsoleTable.From(films).Write();
 
@@ -34,7 +34,7 @@ namespace MovieApp
                 };
 
             var films = MoviesContext.Instance.Films.Join(ratings,
-                        f => f.Rating,
+                        f => f.RatingCode,
                         r => r.Code,
                         (f, r) => new { f.Title, r.Code, r.Name });
             ConsoleTable.From(films).Write();
